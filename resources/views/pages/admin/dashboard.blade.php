@@ -20,7 +20,7 @@
         <div class="col-md-4">
           <div class="card mb-2">
             <div class="card-body">
-              <div class="dashboard-card-title">Customer</div>
+              <div class="dashboard-card-title">Users</div>
               <div class="dashboard-card-subtitle">{{ $customer }}</div>
             </div>
           </div>

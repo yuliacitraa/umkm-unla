@@ -93,7 +93,7 @@
                 <div class="form-group">
                   <label>Store</label>
                   <p class="text-muted">
-                      Apakah anda juga ingin membuka toko?
+                      Do you want to open a store?
                   </p>
                   <div
                   class="custom-control custom-radio custom-control-inline"
@@ -107,7 +107,7 @@
                           :value="true"
                       />
                       <label for="openStoreTrue" class="custom-control-label">
-                          Iya, boleh
+                          hmm, yes
                       </label>
                   </div>
                   <div
@@ -122,12 +122,12 @@
                           :value="false"
                       />
                       <label for="openStoreFalse" class="custom-control-label">
-                          Enggak, makasih
+                          no, thanks
                       </label>
                   </div>
               </div>
               <div class="form-group" v-if="is_store_open">
-                  <label>Nama Toko</label>
+                  <label>Store Name</label>
                   <input 
                       v-model="store_name"
                       id="store_name" 
@@ -203,7 +203,7 @@
 
                 if(response.data=='Available') {
                   self.$toasted.show(
-                    "email anda tersedia",
+                    "email available",
                     {
                       position: "top-center",
                       className: "rounded",
@@ -214,7 +214,7 @@
 
                 } else {
                   self.$toasted.error(
-                    "Maaf, tampaknya email sudah terdaftar pada sistem kami",
+                    "sorry, email has been taken",
                     {
                       position: "top-center",
                       className: "rounded",

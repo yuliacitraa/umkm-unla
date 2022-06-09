@@ -18,8 +18,11 @@ Route::get('/', [App\Http\Controllers\HomeController::class, 'index'])->name('ho
 Route::get('/categories', [App\Http\Controllers\CategoryController::class, 'index'])->name('categories');
 Route::get('/categories/{id}', [App\Http\Controllers\CategoryController::class, 'detail'])->name('categories-detail');
 Route::get('/detail/{id}', [App\Http\Controllers\DetailController::class, 'index'])->name('detail');
-Route::get('/detail/{id}', [App\Http\Controllers\DetailController::class, 'add'])->name('detail-add');
+Route::post('/detail/{id}', [App\Http\Controllers\DetailController::class, 'add'])->name('detail-add');
+
 Route::get('/cart', [App\Http\Controllers\CartController::class, 'index'])->name('cart');
+Route::delete('/cart/{id}', [App\Http\Controllers\CartController::class, 'delete'])->name('cart-delete');
+Route::post('/cart/{id}', [App\Http\Controllers\CheckoutController::class, 'process'])->name('checkout');
 Route::get('/success', [App\Http\Controllers\CartController::class, 'success'])->name('success');
 
 Route::get('/register/success', [App\Http\Controllers\Auth\RegisterController::class, 'success'])->name('register-success');

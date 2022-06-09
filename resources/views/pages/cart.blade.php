@@ -47,80 +47,43 @@
                 </tr>
               </thead>
               <tbody>
-                <tr>
-                  <td style="width: 20%">
-                    <img
-                      src="/images/croffle.jpg"
-                      alt=""
-                      class="cart-image"
-                    />
-                  </td>
-                  <td style="width: 35%">
-                    <div class="product-title">Cilok Polos</div>
-                    <div class="product-subtitle">citrastore</div>
-                  </td>
-                  <td style="width: 35%">
-                    <div class="product-title">RP. 12.000</div>
-                    <div class="product-subtitle">Rupiah</div>
-                  </td>
-                  <td style="width: 35%">
-                    <div class="product-title">3</div>
-                    <div class="product-subtitle"></div>
-                  </td>
-                  <td style="width: 20%">
-                    <a href="#" class="btn btn-remove-cart">Remove</a>
-                  </td>
-                </tr>
+                @php $totalPrice = 0 @endphp
+                @foreach ($carts as $cart)
+                  <tr>
+                    <td style="width: 20%">
+                      @if ($cart->product->galleries)
+                        <img
+                          src="{{ Storage::url($cart->product->galleries->first()->photos) }}"
+                          alt=""
+                          class="cart-image"
+                        />  
+                      @endif
+                    </td>
+                    <td style="width: 35%">
+                      <div class="product-title">{{ $cart->product->name }}</div>
+                      <div class="product-subtitle">{{ $cart->product->user->store_name }}</div>
+                    </td>
+                    <td style="width: 35%">
+                      <div class="product-title">{{ number_format($cart->product->price) }}</div>
+                      <div class="product-subtitle">Rupiah</div>
+                    </td>
+                    <td style="width: 35%">
+                      <div class="product-title">3</div>
+                      <div class="product-subtitle"></div>
+                    </td>
+                    <td style="width: 20%">
+                      <form action="{{ route('cart-delete', $cart->id) }}" method="post">
+                        @method('DELETE')
+                        @csrf
+                        <button type="submit" class="btn btn-remove-cart">Remove</button>
+                      </form>
+                    </td>
+                  </tr>
+                  @php
+                      $totalPrice += $cart->product->price
+                  @endphp
+                @endforeach
 
-                <tr>
-                  <td style="width: 20%">
-                    <img
-                      src="/images/cilok.jpg"
-                      alt=""
-                      class="cart-image"
-                    />
-                  </td>
-                  <td style="width: 35%">
-                    <div class="product-title">Cilok Polos</div>
-                    <div class="product-subtitle">citrastore</div>
-                  </td>
-                  <td style="width: 35%">
-                    <div class="product-title">RP. 12.000</div>
-                    <div class="product-subtitle">Rupiah</div>
-                  </td>
-                  <td style="width: 35%">
-                    <div class="product-title">3</div>
-                    <div class="product-subtitle"></div>
-                  </td>
-                  <td style="width: 20%">
-                    <a href="#" class="btn btn-remove-cart">Remove</a>
-                  </td>
-                </tr>
-
-                <tr>
-                  <td style="width: 20%">
-                    <img
-                      src="/images/salad-buah.jpg"
-                      alt=""
-                      class="cart-image"
-                    />
-                  </td>
-                  <td style="width: 35%">
-                    <div class="product-title">Cilok Polos</div>
-                    <div class="product-subtitle">citrastore</div>
-                  </td>
-                  <td style="width: 35%">
-                    <div class="product-title">RP. 12.000</div>
-                    <div class="product-subtitle">Rupiah</div>
-                  </td>
-                  <td style="width: 35%">
-                    <div class="product-title">3</div>
-                    <div class="product-subtitle"></div>
-                  </td>
-                  <td style="width: 20%">
-                    <a href="#" class="btn btn-remove-cart">Remove</a>
-                  </td>
-                </tr>
               </tbody>
             </table>
           </div>
@@ -134,6 +97,10 @@
         <div class="col-12">
           <h2 class="mb-4">Shipping Details</h2>
         </div>
+      </div>
+
+      <form action="#" method="POST" enctype="multipart/form-data">
+        @csrf
         <div class="row mb-2" data-aos="fade-up" data-aos-delay="200">
           <div class="col-md-6">
             <div class="form-group">
@@ -143,19 +110,19 @@
                 class="form-control"
                 id="name"
                 name="name"
-                value="Yulia Citra"
+                value="{{ Auth::User()->name }}"
               />
             </div>
           </div>
           <div class="col-md-6">
             <div class="form-group">
-              <label for="phoneNumber">Phone Number</label>
+              <label for="phone">Phone Number</label>
               <input
                 type="text"
                 class="form-control"
-                id="phoneNumber"
-                name="phoneNumber"
-                value="0816861173"
+                id="phone"
+                name="phone"
+                value="{{ Auth::User()->phone }}"
               />
             </div>
           </div>
@@ -167,7 +134,7 @@
                 class="form-control"
                 id="address"
                 name="address"
-                value="baleendah"
+                value="{{ Auth::User()->address }}"
               />
             </div>
           </div>
@@ -186,41 +153,43 @@
             </div>
           </div>
         </div>
-      </div>
 
-      <!-- payment information -->
-      <div class="row" data-aos="fade-up" data-aos-delay="150">
-        <div class="col-12">
-          <hr />
+        <!-- payment information -->
+        <div class="row" data-aos="fade-up" data-aos-delay="150">
+          <div class="col-12">
+            <hr />
+          </div>
+          <div class="col-12">
+            <h2 class="mb-2">Payment Information</h2>
+          </div>
         </div>
-        <div class="col-12">
-          <h2 class="mb-2">Payment Information</h2>
-        </div>
-      </div>
 
-      <div class="row" data-aos="fade-up" data-aos-delay="200">
-        <div class="col-4 col-md-2">
-          <div class="product-title">Rp. 12.000</div>
-          <div class="product-subtitle">Price</div>
+        <div class="row" data-aos="fade-up" data-aos-delay="200">
+          <div class="col-4 col-md-2">
+            <div class="product-title">{{ number_format($totalPrice ?? 0) }}</div>
+            <div class="product-subtitle">Price</div>
+          </div>
+          <div class="col-4 col-md-2">
+            <div class="product-title">2</div>
+            <div class="product-subtitle">Order Total</div>
+          </div>
+          <div class="col-4 col-md-2">
+            <div class="product-title">Rp. 12.000</div>
+            <div class="product-subtitle">Shipping Cost</div>
+          </div>
+          <div class="col-4 col-md-2">
+            <div class="product-title" style="color: #068d9d">Rp. 24.000</div>
+            <div class="product-subtitle">Total Payment</div>
+          </div>
+          <div class="col-8 col-md-3">
+            <button
+              type="submit" class="btn btn-success mt-4 px-4 btn-block"
+              >Checkout Now</button
+            >
+          </div>
         </div>
-        <div class="col-4 col-md-2">
-          <div class="product-title">2</div>
-          <div class="product-subtitle">Order Total</div>
-        </div>
-        <div class="col-4 col-md-2">
-          <div class="product-title">Rp. 12.000</div>
-          <div class="product-subtitle">Shipping Cost</div>
-        </div>
-        <div class="col-4 col-md-2">
-          <div class="product-title" style="color: #068d9d">Rp. 24.000</div>
-          <div class="product-subtitle">Total Payment</div>
-        </div>
-        <div class="col-8 col-md-3">
-          <a href="{{ route('success') }}" class="btn btn-success mt-4 px-4 btn-block"
-            >Checkout Now</a
-          >
-        </div>
-      </div>
+      </form>
+
     </div>
   </section>
 </div>

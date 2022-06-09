@@ -81,7 +81,7 @@
           </div>
           <div class="col-lg-2" data-aos="zoom-in">
             @auth
-              <form action="{{ route('detail-add', $product->id) }}" method="post" enctype="multipart/form-data">
+              <form action="{{ route('detail-add', $product->id)  }}" method="post" enctype="multipart/form-data">
                 @csrf
                 <button
                   type="submit"

@@ -29,7 +29,7 @@
           <div class="list-group list-group-flush">
             <a
               href="{{ route('admin-dashboard') }}"
-              class="list-group-item list-group-item-action {{ (request()->is('#')) ? 'active' : '' }}"
+              class="list-group-item list-group-item-action {{ (request()->is('admin')) ? 'active' : '' }}"
             >
               Dashboard
             </a>
@@ -106,7 +106,7 @@
                         alt=""
                         class="rounded-circle mr-2 profile-picture"
                       />
-                      Hi, Yulia
+                      Hi, {{ Auth::user()->name }}
                     </a>
                     <div class="dropdown-menu">
                       <a href="/" class="dropdown-item">Logout</a>

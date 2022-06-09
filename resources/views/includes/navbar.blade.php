@@ -21,13 +21,16 @@
     <div class="collapse navbar-collapse" id="navbarResponsive">
       <ul class="navbar-nav ml-auto">
         <li class="nav-item">
-          <a href="{{ route('home') }}" class="nav-link">home</a>
+          <a href="{{ route('home') }}"
+             class="nav-link {{ (request()->is('/')) ? 'active' : '' }}">home</a>
         </li>
         <li class="nav-item">
-          <a href="{{ route('categories') }}" class="nav-link">products</a>
+          <a href="{{ route('categories') }}"
+             class="nav-link {{ (request()->is('categories*')) ? 'active' : '' }}">products</a>
         </li>
         <li class="nav-item">
-          <a href="" class="nav-link">search</a>
+          <a href="" 
+             class="nav-link {{ (request()->is('#')) ? 'active' : '' }}">search</a>
         </li>
         @guest
           <li class="nav-item active">
@@ -76,7 +79,7 @@
               </div>
             </li>
             <li class="nav-item">
-              <a href="#" class="nav-link d-inline-block mt-2">
+              <a href="{{ route('cart') }}" class="nav-link d-inline-block mt-2">
                 <img src="/images/icon-cart.svg" alt="" />
               </a>
             </li>
@@ -87,7 +90,7 @@
               <a href="#" class="nav-link">Hi, {{ Auth::user()->name }}</a>
             </li>
             <li class="nav-item">
-              <a href="#" class="nav-link d-inline-block">Cart</a>
+              <a href="{{ route('cart') }}" class="nav-link d-inline-block">Cart</a>
             </li>
           </ul>
         @endauth
