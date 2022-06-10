@@ -22,7 +22,10 @@ Route::post('/detail/{id}', [App\Http\Controllers\DetailController::class, 'add'
 
 Route::get('/cart', [App\Http\Controllers\CartController::class, 'index'])->name('cart');
 Route::delete('/cart/{id}', [App\Http\Controllers\CartController::class, 'delete'])->name('cart-delete');
-Route::post('/cart/{id}', [App\Http\Controllers\CheckoutController::class, 'process'])->name('checkout');
+
+Route::post('/checkout', [App\Http\Controllers\CheckoutController::class, 'process'])->name('checkout');
+Route::post('/checkout/callback', [App\Http\Controllers\CheckoutController::class, 'callback'])->name('midtrans-callback');
+
 Route::get('/success', [App\Http\Controllers\CartController::class, 'success'])->name('success');
 
 Route::get('/register/success', [App\Http\Controllers\Auth\RegisterController::class, 'success'])->name('register-success');

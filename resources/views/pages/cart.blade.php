@@ -99,8 +99,9 @@
         </div>
       </div>
 
-      <form action="#" method="POST" enctype="multipart/form-data">
+      <form action="{{ route('checkout') }}" method="POST" enctype="multipart/form-data">
         @csrf
+        <input type="hidden" name="total_price" value='{{ $totalPrice }}'>
         <div class="row mb-2" data-aos="fade-up" data-aos-delay="200">
           <div class="col-md-6">
             <div class="form-group">
@@ -138,7 +139,7 @@
               />
             </div>
           </div>
-          <div class="col-md-6">
+          {{-- <div class="col-md-6">
             <div class="form-group">
               <label for="shippingOption">Shipping Option</label>
               <select
@@ -151,7 +152,7 @@
                 <option value="unla">At UNLA</option>
               </select>
             </div>
-          </div>
+          </div> --}}
         </div>
 
         <!-- payment information -->

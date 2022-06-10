@@ -4,15 +4,13 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
-use Illuminate\Database\Eloquent\SoftDeletes;
 
-
-class Transaction extends Model
+class TransactionDetail extends Model
 {
-    use HasFactory, SoftDeletes;
+    use HasFactory;
 
     protected $fillable = [
-        'users_id', 'shipping_price', 'total_price', 'transaction_status', 'code'
+        'transactions_id', 'products_id', 'price', 'code'
     ];
 
     protected $hidden = [
