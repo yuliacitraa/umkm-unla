@@ -19,7 +19,8 @@
     <div class="dashboard-content">
       <div class="row">
         <div class="col-12">
-          <form action="">
+          <form action="{{ route('dashboard-settings-redirect', 'dashboard-settings-account') }}" method="post" enctype="multipart/form-data">
+            @csrf
             <div class="card">
               <div class="card-body">
                 <div class="row">
@@ -32,14 +33,14 @@
                         class="form-control"
                         id="name"
                         name="name"
-                        value="Yulia Citra"
+                        value="{{ $user->name }}"
                       />
                     </div>
                   </div>
                   <div class="col-md-12">
                     <div class="form-group">
                       <label>Email</label>
-                      <input type="text" class="form-control" />
+                      <input type="text" name="email" id="email" value="{{ $user->email }}" class="form-control" />
                     </div>
                   </div>
                   <div class="col-md-12">
@@ -48,9 +49,9 @@
                       <input
                         type="text"
                         class="form-control"
-                        id="phoneNumber"
-                        name="phoneNumber"
-                        value=""
+                        id="phone"
+                        name="phone"
+                        value="{{ $user->phone }}"
                       />
                     </div>
                   </div>
@@ -62,15 +63,14 @@
                         class="form-control"
                         id="address"
                         name="address"
-                        value="baleendah"
+                        value="{{ $user->address }}"
                       />
                     </div>
                   </div>
                 </div>
                 <div class="row">
-                  
                   <div class="col text-right">
-                    <button class="btn btn-success px-5">Save Now</button>
+                    <button type="submit" class="btn btn-success px-5">Save Now</button>
                   </div>
                 </div>
               </div>

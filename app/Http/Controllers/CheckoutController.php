@@ -44,9 +44,49 @@ class CheckoutController extends Controller
                 'products_id'     => $cart->product->id,
                 'price'           => $cart->product->price,
                 'code'            => $trx
-        ]);
+            ]);
         }
-        return dd($transaction);
+
+        //delete cart
+        Cart::where('users_id', Auth::user()->id)->delete();
+        
+
+        //konfigurasi midtrans
+
+        Config::$serverKey = config('services.midtrans.serverKey');
+        Config::$isProduction = config('services.midtrans.isProduction');
+        Config::$isSanitized = config('services.midtrans.isSanitized');
+        Config::$is3ds = config('services.midtrans.is3ds');
+
+        //array untuk dikirim ke midtrans
+        $midtrans = [
+            'transaction_details' => [
+                'order_id' => $code,
+                'gross_amount' => (int) $request->total_price,
+            ],
+
+            'customer_details' => [
+                'first_name' => Auth::user()->name,
+                'email'      => Auth::user()->email,
+            ],
+
+            'enabled_payments' => [
+                'gopay', 'bank_transfer'
+            ],
+
+            'vtweb' => []
+        ];
+
+        try {
+            // Get Snap Payment Page URL
+            $paymentUrl = Snap::createTransaction($midtrans)->redirect_url;
+            
+            // Redirect to Snap Payment Page
+            return redirect ($paymentUrl);
+        }
+        catch (Exception $e) {
+            echo $e->getMessage();
+        }
     }
 
     public function callback (Request $request) {
