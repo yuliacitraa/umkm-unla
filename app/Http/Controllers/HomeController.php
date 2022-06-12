@@ -17,8 +17,8 @@ class HomeController extends Controller
      */
     public function index()
     {
-        $categories = Category::take(3)->get();
-        $products = Product::with(['galleries'])->take(6)->get();
+        $categories = Category::take(6)->get();
+        $products = Product::with(['galleries'])->take(8)->get();
 
         return view('pages.home', [
             'categories' => $categories,

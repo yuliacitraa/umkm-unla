@@ -111,7 +111,7 @@
           <div class="col-12 col-lg-8">
             {!! $product->description !!}
             <p>
-              <a href="https://wa.me/number"
+              <a href="https://wa.me/{{ $product->user->phone }}"
                 ><img class="mt-4" src="/images/icon-whatsapp.svg" alt="" />
                 Chat</a
               >

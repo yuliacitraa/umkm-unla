@@ -62,7 +62,7 @@
                   </div>
                 </div>
               </div>
-              <form action="{{ route('dashboard-transactions-update') }}" method="post" enctype="multipart/form-data">
+              <form action="{{ route('dashboard-transactions-update', $transaction->id) }}" method="post" enctype="multipart/form-data">
                 @csrf
                 <div class="row">
                   <div class="col-12 mt-4">
@@ -74,14 +74,19 @@
                         <div class="product-title">Address</div>
                         <div class="product-subtitle">{{ $transaction->transaction->user->address }}</div>
                       </div>
-                      <div class="col-12 col-md-3">
+                      <div class="col-12 col-md-6">
+                        <div class="product-title">Shipping Option</div>
+                        <div class="product-subtitle">{{ $transaction->transaction->shipping_option }}</div>
+                      </div>
+                      <div class="col-12 col-md-6">
                         <div class="product-title">Shipping Status</div>
                         <select
-                          name="shipping_status"
+                          name="transaction_status"
                           id="status"
                           class="form-control"
                           v-model="status"
-                        >
+                        > 
+                          <option value="">{{ $transaction->transaction->transaction_status }}</option>
                           <option value="PENDING">Pending</option>
                           <option value="SUCCESS">Success</option>
                         </select>

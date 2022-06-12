@@ -52,7 +52,7 @@ class DashboardProductController extends Controller
         $item = ProductGallery::findOrFail($id);
         $item->delete();
 
-        return redirect()->route('dashboard-products-details', $request->products_id);
+        return redirect()->route('dashboard-products-details', $item->products_id);
 
     }
 

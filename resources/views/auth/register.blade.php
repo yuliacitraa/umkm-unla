@@ -165,13 +165,6 @@
                   >Back to Sign In</a
                 >
               </form>
-
-              {{-- <div>
-                <p class="mt-4 justify-content-center">
-                  mau buka toko?
-                  <a href="register-toko">Sign Up Here</a>
-                </p>
-              </div> --}}
             </div>
           </div>
         </div>

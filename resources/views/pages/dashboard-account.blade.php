@@ -67,6 +67,13 @@
                       />
                     </div>
                   </div>
+                  <div class="col-md-12">
+                    <div class="form-group">
+                      <label for="">Password</label>
+                      <input type="text" name="password" class="form-control">
+                      <small>don't fill the box if you don't want to change password</small>
+                    </div>
+                  </div>
                 </div>
                 <div class="row">
                   <div class="col text-right">

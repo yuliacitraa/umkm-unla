@@ -65,6 +65,8 @@ Route::group(['middleware' => ['auth', 'admin']], function(){
     Route::resource('admin/user', App\Http\Controllers\Admin\UserController::class);
     Route::resource('admin/product', App\Http\Controllers\Admin\ProductController::class);
     Route::resource('admin/product-gallery', App\Http\Controllers\Admin\ProductGalleryController::class);
+    Route::resource('admin/transaction', App\Http\Controllers\Admin\TransactionController::class);
+
 });
 
 

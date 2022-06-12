@@ -19,9 +19,12 @@
           <nav>
             <ol class="breadcrumb">
               <li class="breadcrumb-item">
-                <a href="index.html">home</a>
+                <a href="{{ route('home') }}">home</a>
               </li>
-              <li class="breadcrumb-item active">Cart</li>
+              <li class="breadcrumb-item">
+                <a href="{{ route('categories') }}">product</a>
+              </li>
+              <li class="breadcrumb-item active">cart</li>
             </ol>
           </nav>
         </div>
@@ -42,12 +45,12 @@
                   <td>Image</td>
                   <td>Name &amp; Seller</td>
                   <td>Price</td>
-                  <td>Amount</td>
+                  {{-- <td>Amount</td> --}}
                   <td>Menu</td>
                 </tr>
               </thead>
               <tbody>
-                @php $totalPrice = 0 @endphp
+                @php $totalPay = 0 @endphp
                 @foreach ($carts as $cart)
                   <tr>
                     <td style="width: 20%">
@@ -67,10 +70,10 @@
                       <div class="product-title">{{ number_format($cart->product->price) }}</div>
                       <div class="product-subtitle">Rupiah</div>
                     </td>
-                    <td style="width: 35%">
+                    {{-- <td style="width: 35%">
                       <div class="product-title">3</div>
                       <div class="product-subtitle"></div>
-                    </td>
+                    </td> --}}
                     <td style="width: 20%">
                       <form action="{{ route('cart-delete', $cart->id) }}" method="post">
                         @method('DELETE')
@@ -80,7 +83,7 @@
                     </td>
                   </tr>
                   @php
-                      $totalPrice += $cart->product->price
+                      $totalPay += $cart->product->price
                   @endphp
                 @endforeach
 
@@ -101,7 +104,6 @@
 
       <form action="{{ route('checkout') }}" method="POST" enctype="multipart/form-data">
         @csrf
-        <input type="hidden" name="total_price" value='{{ $totalPrice }}'>
         <div class="row mb-2" data-aos="fade-up" data-aos-delay="200">
           <div class="col-md-6">
             <div class="form-group">
@@ -139,12 +141,12 @@
               />
             </div>
           </div>
-          {{-- <div class="col-md-6">
+          <div class="col-md-6">
             <div class="form-group">
               <label for="shippingOption">Shipping Option</label>
               <select
-                name="shippingOption"
-                id="shippingOption"
+                name="shipping_option"
+                id="shipping_option"
                 class="form-control"
               >
                 <option value="COD">COD</option>
@@ -152,7 +154,7 @@
                 <option value="unla">At UNLA</option>
               </select>
             </div>
-          </div> --}}
+          </div>
         </div>
 
         <!-- payment information -->
@@ -164,24 +166,30 @@
             <h2 class="mb-2">Payment Information</h2>
           </div>
         </div>
-
         <div class="row" data-aos="fade-up" data-aos-delay="200">
           <div class="col-4 col-md-2">
-            <div class="product-title">{{ number_format($totalPrice ?? 0) }}</div>
+            <div class="product-title">Rp. {{ number_format($totalPay ?? 0) }}</div>
             <div class="product-subtitle">Price</div>
           </div>
-          <div class="col-4 col-md-2">
-            <div class="product-title">2</div>
+          {{-- <div class="col-4 col-md-2">
+            <div class="product-title">0</div>
             <div class="product-subtitle">Order Total</div>
-          </div>
+          </div> --}}
+          @php
+              $adminCost = 5000
+          @endphp
           <div class="col-4 col-md-2">
-            <div class="product-title">Rp. 12.000</div>
-            <div class="product-subtitle">Shipping Cost</div>
+            <div class="product-title">Rp. {{ number_format($adminCost) }}</div>
+            <div class="product-subtitle">Admin Cost</div>
           </div>
+          @php
+              $totalPrice = $adminCost + $totalPay
+          @endphp
           <div class="col-4 col-md-2">
-            <div class="product-title" style="color: #068d9d">Rp. 24.000</div>
+            <div class="product-title" style="color: #068d9d">Rp {{ number_format($totalPrice) ?? 0}}</div>
             <div class="product-subtitle">Total Payment</div>
           </div>
+          <input type="hidden" name="total_price" value='{{ $totalPrice }}'>
           <div class="col-8 col-md-3">
             <button
               type="submit" class="btn btn-success mt-4 px-4 btn-block"

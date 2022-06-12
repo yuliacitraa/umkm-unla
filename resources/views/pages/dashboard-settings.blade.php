@@ -35,7 +35,7 @@
                   <div class="col-md-12">
                     <label>Store Category</label>
                       <select name="categories_id" id="" class="form-control">
-                        <option value="{{ $user->categories_id }}">Not changed</option>
+                        <option value="">not changed</option>
                         @foreach ($categories as $category)
                           <option value="{{ $category->id }}">{{ $category->name }}</option>
                         @endforeach

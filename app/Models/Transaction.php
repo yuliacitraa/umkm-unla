@@ -12,7 +12,7 @@ class Transaction extends Model
     use HasFactory, SoftDeletes;
 
     protected $fillable = [
-        'users_id', 'shipping_price', 'total_price', 'transaction_status', 'code'
+        'users_id', 'shipping_price', 'total_price', 'transaction_status', 'code', 'shipping_option'
     ];
 
     protected $hidden = [
