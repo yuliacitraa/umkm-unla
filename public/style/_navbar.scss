@@ -35,3 +35,7 @@
 .umkmunla {
   color: #8185da;
 }
+
+.btn-login {
+  @include button-variant(#8185da, transparent);
+}

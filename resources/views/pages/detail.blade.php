@@ -94,7 +94,7 @@
               <a
                 href="{{ route('login') }}"
                 class="btn px-4 text-white btn-block mb-3"
-                style="background-color: #8185da"
+                style="background-color: #e4abbd"
                 >Sign in to add
               </a>
             @endauth

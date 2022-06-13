@@ -51,4 +51,8 @@
     line-height: 180%;
     color: #525252;
   }
+
+  .btn-add {
+    @include button-variant(#8185da, transparent);
+  }
 }

@@ -20,7 +20,8 @@
         <div class="col-12">
           <a
             href="{{ route('dashboard-products-create') }}"
-            class="btn btn-success"
+            class="btn text-white"
+            style="background-color: #8185da"
             >Add new product</a
           >
         </div>

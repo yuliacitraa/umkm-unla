@@ -19,13 +19,13 @@
       <div class="dashboard-content">
         <div class="row">
           <div class="col-12">
-            <div class="alert alert-danger">
+            {{-- <div class="alert alert-danger">
               <ul>
                 @foreach ($errors->all() as $error)
                   <li>{{ $error }}</li>
                 @endforeach
               </ul>
-            </div>
+            </div> --}}
             <form action="{{ route('dashboard-products-store') }}" method="post" enctype="multipart/form-data">
               @csrf
               <input type="hidden" name="users_id" value="{{ Auth::user()->id }}">
@@ -72,7 +72,8 @@
                   </div>
                   <div class="row">
                     <div class="col text-right">
-                      <button class="btn btn-success px-5">
+                      <button class="btn px-5 text-white"
+                      style="background-color: #8185da">
                         Save Now
                       </button>
                     </div>

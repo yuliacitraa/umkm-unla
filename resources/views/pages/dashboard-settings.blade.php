@@ -89,7 +89,8 @@
                 </div>
                 <div class="row">
                   <div class="col text-right">
-                    <button class="btn btn-success px-3 m-2">
+                    <button class="btn px-5 m-2 text-white"
+                    style="background-color: #8185da">
                       Save Now
                     </button>
                   </div>

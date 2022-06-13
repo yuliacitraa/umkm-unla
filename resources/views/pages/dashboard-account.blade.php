@@ -77,7 +77,8 @@
                 </div>
                 <div class="row">
                   <div class="col text-right">
-                    <button type="submit" class="btn btn-success px-5">Save Now</button>
+                    <button type="submit" class="btn btn-success px-5 text-white"
+                    style="background-color: #8185da">Save Now</button>
                   </div>
                 </div>
               </div>

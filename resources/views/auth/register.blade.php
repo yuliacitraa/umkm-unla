@@ -157,11 +157,13 @@
 
                 <button
                   type="submit"
-                  class="btn btn-success btn-block mt-4"
+                  class="btn btn-block mt-4 text-white"
+                  style="background-color: #8185da"
                   :disabled="this.email_unavailable"
                   >Sign Up Now
                 </button>
-                <a href="{{ route('login') }}" class="btn btn-signup btn-block mt-4"
+                <a href="{{ route('login') }}" class="btn btn-block mt-4 text-white"
+                style="background-color: #e4abbd"
                   >Back to Sign In</a
                 >
               </form>

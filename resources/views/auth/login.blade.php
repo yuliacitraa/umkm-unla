@@ -37,12 +37,14 @@
                 </div>
                 <button
                   type="submit"
-                  class="btn btn-success btn-block w-75 mt-4"
+                  class="btn btn-block w-75 mt-4 text-white"
+                  style="background-color: #8185da"
                   >Sign In 
                 </button>
                 <a
                   href="{{ route('register') }}"
-                  class="btn btn-signup btn-block w-75 mt-4"
+                  class="btn btn-signup btn-block w-75 mt-4 text-white"
+                  style="background-color: #e4abbd"
                   >Sign Up</a
                 >
               </form>

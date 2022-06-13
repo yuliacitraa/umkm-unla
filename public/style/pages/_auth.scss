@@ -16,9 +16,11 @@
       background: #f3f3f3;
     }
 
+    .btn-login {
+      @include button-variant(#8185da, transparent);
+    }
     .btn-signup {
-      @include button-variant(#f3f3f3, transparent);
-      color: #bbb;
+      @include button-variant(#e4abbd, transparent);
     }
   }
 }

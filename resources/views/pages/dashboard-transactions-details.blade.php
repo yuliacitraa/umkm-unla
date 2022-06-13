@@ -115,7 +115,8 @@
                 </div>
                 <div class="row mt-4">
                   <div class="col-12 text-right">
-                    <button type="submit" class="btn btn-success mt-4">
+                    <button type="submit" class="btn px-5 text-white"
+                    style="background-color: #8185da">
                       Save Now
                     </button>
                   </div>

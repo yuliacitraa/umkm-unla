@@ -14,7 +14,6 @@
       padding: 0.875rem 1.25rem;
       font-size: 1.2rem;
     }
-
     .list-group {
       width: 15rem;
     }
@@ -45,13 +44,13 @@
     color: #c5c5c5;
 
     &.active {
-      background-color: linear-gradient(
+      background: linear-gradient(
         270deg,
         rgba(6, 141, 157, 0.32) 2%,
         rgba(255, 255, 255, 0) 100%
       );
       border-right: 4px solid #068d9d;
-      color: #fff;
+      color: #0c0d36;
     }
   }
 
@@ -123,15 +122,16 @@
       .nav-link {
         font-weight: normal;
         font-size: 18px;
-
+        color: #9191a9;
         border-radius: 0;
-      }
-      &.active {
-        font-weight: 500;
-        font-size: 18px;
-        color: #0c0d36;
-        border-bottom: 2px solid #0c0d35;
-        background: none;
+
+        &.active {
+          font-weight: 500;
+          font-size: 18px;
+          color: #0c0d36;
+          border-bottom: 2px solid #0c0d36;
+          background: none;
+        }
       }
     }
 

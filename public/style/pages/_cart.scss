@@ -37,4 +37,8 @@
       @include button-variant(#e4abbd, transparent);
     }
   }
+
+  .btn-checkout {
+    @include button-variant(#8185da, transparent);
+  }
 }

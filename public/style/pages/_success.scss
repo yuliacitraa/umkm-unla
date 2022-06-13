@@ -9,8 +9,10 @@
     margin-top: 0;
   }
 
+  .btn-dashboard {
+    @include button-variant(#8185da, transparent);
+  }
   .btn-signup {
-    @include button-variant(#f3f3f3, transparent);
-    color: #bbbbbb;
+    @include button-variant(#e4abbd, transparent);
   }
 }

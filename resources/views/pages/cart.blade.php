@@ -78,7 +78,7 @@
                       <form action="{{ route('cart-delete', $cart->id) }}" method="post">
                         @method('DELETE')
                         @csrf
-                        <button type="submit" class="btn btn-remove-cart">Remove</button>
+                        <button type="submit" class="btn btn-remove-cart text-white">Remove</button>
                       </form>
                     </td>
                   </tr>
@@ -176,6 +176,7 @@
             <div class="product-subtitle">Order Total</div>
           </div> --}}
           @php
+              // $adminCost = $totalPay*(5/100)
               $adminCost = 5000
           @endphp
           <div class="col-4 col-md-2">
@@ -192,7 +193,8 @@
           <input type="hidden" name="total_price" value='{{ $totalPrice }}'>
           <div class="col-8 col-md-3">
             <button
-              type="submit" class="btn btn-success mt-4 px-4 btn-block"
+              type="submit" class="btn mt-4 px-4 btn-block text-white" 
+              style="background-color: #8185da"
               >Checkout Now</button
             >
           </div>
