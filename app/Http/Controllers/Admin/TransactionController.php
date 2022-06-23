@@ -35,12 +35,6 @@ class TransactionController extends Controller
                                     <a class="dropdown-item" href="' . route('transaction.edit', $item->id) . '">
                                         Edit
                                     </a>
-                                    <form action="' . route('transaction.destroy', $item->id) .'" method="POST">
-                                        ' . method_field('delete') . csrf_field() . '
-                                        <button type="submit" class="dropdown-item text-danger">
-                                            Delete
-                                        </button>
-                                    </form>
                                 </div>
                             </div>
                         </div>';
@@ -122,9 +116,6 @@ class TransactionController extends Controller
      */
     public function destroy($id)
     {
-        $item = Transaction::findOrFail($id);
-        $item->delete();
-
-        return redirect()->route('transaction.index');
+        //
     }
 }

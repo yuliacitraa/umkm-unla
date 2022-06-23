@@ -110,12 +110,13 @@
         <div class="row">
           <div class="col-12 col-lg-8">
             {!! $product->description !!}
-            <p>
-              <a href="https://wa.me/{{ $product->user->phone }}"
-                ><img class="mt-4" src="/images/icon-whatsapp.svg" alt="" />
-                Chat</a
-              >
-            </p>
+            <a href="https://wa.me/{{ $product->user->phone }}">
+              <span>
+                <img class="mt-4" src="/images/icon-whatsapp.svg" alt="" />
+              </span>  
+              <span class="mt-3">chat</span>
+              </a>
+              
           </div>
         </div>
       </div>

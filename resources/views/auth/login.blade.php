@@ -14,7 +14,7 @@
               />
             </div>
             <div class="col-lg-5">
-              <h2>Mari kita dukung UMKM disekitar kita!</h2>
+              <h2>Let's support UMKM around us!</h2>
               <form method="POST" action="{{ route('login') }}" class="mt-3">
                 @csrf
                 <div class="form-group">
